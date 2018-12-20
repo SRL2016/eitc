@@ -6,13 +6,6 @@ library(RPostgreSQL)
 library(RColorBrewer)
 library(classInt)
 
-proj_con <- dbConnect(dbDriver("PostgreSQL"), dbname = "project",
-                      host = "sp63kb5w0r8p3p.ckswd2zr0ndt.us-west-2.rds.amazonaws.com", port = 5432,
-                      user = readline("type in username"), password = readline("type in password"))
-pub_con <- dbConnect(dbDriver("PostgreSQL"), dbname = "shift_public",
-                     host = "sp63kb5w0r8p3p.ckswd2zr0ndt.us-west-2.rds.amazonaws.com", port = 5432,
-                     user = readline("type in username"), password = readline("type in password"))
-
 # read puma data -----------------------------------
 
 puma_units <- st_read(proj_con, c("eitc","puma_state_geography")) %>%
