@@ -1,0 +1,86 @@
+---
+title: "EITC Regional Infographics"
+author: "Shift Research Lab"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+      theme: paper
+params:
+  unit: 
+  region: 'Denver County'
+  geom: 
+  pop: ''
+  pvrty: ''
+  income_50k: 55
+  psv_hs: ''
+  nonhiswhite: 1
+  hislat: 2
+  black: 3
+  native: 4
+  asin: 5
+  under18: ''
+  age18to24: ''
+  age25to34: ''
+  age35to44: ''
+  age45to54: ''
+  age55to64: ''
+  age65to74: ''
+  over75: ''
+  eng_spk: ''
+  spn_spk: ''
+  other_spk: ''
+  taxsite: ''
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r dependency, include=FALSE, results='hide', message=FALSE, warning=FALSE}
+library(ggplot2)
+rpt <- readRDS("infograph/rpt.RDS")
+dat <- rpt[[paste(params$unit)]]
+raceeth <- data.frame(
+  cat <- c('White (not Hispanic or Latino)', 'Hispanic or Latino', 'Black or African American', 'AMERICAN INDIAN AND ALASKA NATIVE', 'Asian and Pacific Islander'),
+  popu <- c(params$nonhiswhite, params$hislat, params$black, params$native, params$asin)
+)
+age <- data.frame(
+  agerg <- c('ageunder18','age18to24','age25to34','age35to44','age45to54','age55to64','age65to74','ageover75'),
+  pop <- c(params$under18, params$age18to24, params$age25to34, params$age35to44, params$age45to54, params$age55to64, params$age65to74, params$over75)
+  )
+lang <- data.frame(
+  lan <- c('English', 'Spanish', 'Others'),
+  ppl <- c(params$eng_spk, params$spn_spk, params$other_spk)
+)
+```
+
+![](infograph/logo.png)
+
+##Kelly summarised language
+##Demographic Summary: `r params$region`
+###Total Population: `r format(params$pop, big.mark=",")`
+###Total Population in Poverty: `r format(params$pvrty, big.mark=",")`
+###Families of Income Below 50K: `r format(round(params$income_50k, digits=0), big.mark=",")`
+###Preservation Housing Units: `r format(params$psv_hs, big.mark=",")`
+```{r geom, echo=FALSE}
+plot(dat[dat$geoid10 == paste(params$geom), "geometry"])
+```
+<div class = "fluid-row">
+  <div class = "col-md-4">
+```{r race_ethnicity, echo=FALSE}
+ggplot(raceeth,aes(x=cat,y=popu,fill=cat)) + geom_bar(width = 1, stat = "identity")
+```
+  </div>
+  <div class = "col-md-4">
+```{r age, echo=FALSE}
+ggplot(age,aes(x="",fill=agerg, y=pop)) + geom_bar(stat = "identity") + coord_polar("y")
+```
+  </div>
+  <div class = "col-md-4">
+```{r language, echo=FALSE}
+ggplot(lang,aes(x="",fill=lan, y=ppl)) + geom_bar(stat = "identity") + coord_polar("y")
+```
+  </div>
+</div>
+
+

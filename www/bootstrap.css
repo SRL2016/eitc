@@ -1,0 +1,86 @@
+/*!
+ * Bootswatch v4.1.1
+ * Homepage: https://bootswatch.com
+ * Copyright 2012-2018 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+*//*!
+ * Bootstrap v4.1.1 (https://getbootstrap.com/)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+ @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,600");
+
+* {
+ 	padding:0;
+ 	margin:0;
+ }
+ html { font-size: 100%;
+ 	-webkit-text-size-adjust: 100%;
+ 	-ms-text-size-adjust: 100%;
+ 	text-rendering: optimizelegibility;
+ 	font-family: 'Nunito Sans';
+ }
+
+p {
+	font-family: 'Nunito Sans';
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 18px;
+  padding-top: 0px;
+}
+h2 {
+	font-family: 'Nunito Sans';
+	font-size: 28px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 900;
+	line-height: 24px;
+  padding-top: 10px;
+}
+
+h3 {
+	font-family: 'Nunito Sans';
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 24px;
+  padding-top: 10px;
+}
+
+h4 {
+	font-family: 'Nunito Sans';
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 100;
+	line-height: 20px;
+  padding-top: 4px;
+}
+h5 {
+	font-family: 'Nunito Sans';
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 900;
+	line-height: 28px;
+  padding-top: 5px;
+}
+
+.hovertext text {
+    font-family: 'Nunito Sans';
+    font-size: 14px !important;
+    color: black;
+    opacity: 1;
+}
+.legendtext {
+  font-family: 'Nunito Sans';
+    font-size: 14px !important;
+}
+
+.shiny-output-error { visibility: hidden; },
+.shiny-output-error:before { visibility: hidden; }

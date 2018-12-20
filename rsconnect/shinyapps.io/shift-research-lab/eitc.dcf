@@ -1,0 +1,10 @@
+name: eitc
+title: eitc
+username:
+account: shift-research-lab
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 429387
+bundleId: 1620618
+url: https://shift-research-lab.shinyapps.io/eitc/
+when: 1538579931.68134
