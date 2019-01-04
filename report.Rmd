@@ -8,6 +8,7 @@ output:
 params:
   unit: 
   region: 'Denver County'
+  rep: 'placeholder'
   geom: 
   pop: ''
   pvrty: ''
@@ -59,7 +60,7 @@ lang <- data.frame(
 ##Get Ahead Colorado is a program of The Piton Foundation that provides resources to families in Colorado who qualify for the Earned Income Tax Credit and free tax preparation through Tax Help Colorado.
 ##Only three out of four individuals and families in Colorado who are eligible for the EITC receive the credit. We need your help to make sure that every eligible family in Colorado claims the credit and gets cash back to help with things like transportation, housing and child care. 
 ##Demographic Summary: `r params$region`
-##Representative: name placeholder
+##Representative: `r params$rep`
 ###Total Population: `r format(params$pop, big.mark=",")`
 ###Total Population in Poverty: `r format(params$pvrty, big.mark=",")`
 ###Families of Income Below 50K: `r format(round(params$income_50k, digits=0), big.mark=",")`
