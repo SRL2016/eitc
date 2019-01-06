@@ -7,7 +7,7 @@ library(classInt)
 # library(leaflet.minicharts)
 # library(manipulateWidget)
 
-# load("data.RData")
+load("data.RData")
 
 shinyServer(function(input, output) {
   
