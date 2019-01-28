@@ -1,8 +1,8 @@
 library(shiny)
 library(leaflet)
 library(shinyWidgets)
-# library(leaflet.minicharts)
-# library(mapview)
+
+load("data.RData")
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
@@ -24,7 +24,11 @@ shinyUI(fluidPage(
                                                shape = "curve",
                                                outline = TRUE,
                                                inline = TRUE
-                                              )
+                           ),
+                           checkboxInput("puma",
+                                         label = "Estimates Qualified EITC Units",
+                                         value = FALSE
+                           )
               ),
               mainPanel(
                fluidPage(
@@ -36,9 +40,7 @@ shinyUI(fluidPage(
                           )
                    ),
                    div(style="display: inline-block;vertical-align:top; width: 220px;",
-                          selectInput(inputId = "rpt_ind", label = NULL,
-                                      choices = c("Choose an Indicator", rpt_index[['dropdown']])
-                                      )
+                          uiOutput("geo_dropdown")
                    )
                  ),
                  fluidRow(
@@ -49,6 +51,14 @@ shinyUI(fluidPage(
                ),
                   div(
                     tags$h3(textOutput("boundary")),
+                    fluidRow(
+                      column(4,
+                             tags$h5(textOutput("ttlhh"))
+                      ),
+                      column(4,
+                             tags$h5(textOutput("hh_per"))
+                      )
+                    ),
                     fluidRow(
                       column(4,
                              tags$h5(textOutput("ttlfam"))
@@ -97,45 +107,42 @@ shinyUI(fluidPage(
                     )
                   ),
                   div(
-                    downloadButton("report")
+                    uiOutput('download')
                   )
                   
                 )
               )
-    ),
-    tabPanel("Demographic Deep DIve",
-             sidebarLayout(
-               position = "right",
-               sidebarPanel(width = 2,
-                  checkboxInput("puma",
-                                label = "Estimates Qualified EITC Units",
-                                value = FALSE
-                  )
-               ),
-               mainPanel(
-                 fluidPage(
-                   fluidRow(
-                     div(HTML("<br>")),
-                     div(style="display: inline-block;vertical-align:top; width: 210px;",
-                         selectInput(inputId = "demo_ind", label = NULL,
-                                     choices = c("First, Choose an Subject", as.character(demo_index$ind)[1:13])
-                         )
-                     ),
-                     div(style="display: inline-block;vertical-align:top; width: 220px;",
-                         htmlOutput("layer")
-                     ),
-                     div(style="display: inline-block;vertical-align:top; width: 10px;",
-                         checkboxInput("hide", label = "hide", value = FALSE)
-                     )
-                   ),
-                   fluidRow(
-                     column(12,
-                            leafletOutput("map", width = "100%", height = "700")
-                     )
-                   )
-                 )
-               )
-             )
-            )
+    )
+    # tabPanel("Demographic Deep DIve",
+    #          sidebarLayout(
+    #            position = "right",
+    #            sidebarPanel(width = 2,
+    #               
+    #            ),
+    #            mainPanel(
+    #              fluidPage(
+    #                fluidRow(
+    #                  div(HTML("<br>")),
+    #                  div(style="display: inline-block;vertical-align:top; width: 210px;",
+    #                      selectInput(inputId = "demo_ind", label = NULL,
+    #                                  choices = c("First, Choose an Subject", as.character(demo_index$ind)[1:13])
+    #                      )
+    #                  ),
+    #                  div(style="display: inline-block;vertical-align:top; width: 220px;",
+    #                      htmlOutput("layer")
+    #                  ),
+    #                  div(style="display: inline-block;vertical-align:top; width: 10px;",
+    #                      checkboxInput("hide", label = "hide", value = FALSE)
+    #                  )
+    #                ),
+    #                fluidRow(
+    #                  column(12,
+    #                         leafletOutput("map", width = "100%", height = "700")
+    #                  )
+    #                )
+    #              )
+    #            )
+    #          )
+    #         )
    )
 ))

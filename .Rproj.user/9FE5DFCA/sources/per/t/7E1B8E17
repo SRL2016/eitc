@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1548459062563.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3760482939",
+    "id" : "7E1B8E17",
+    "lastKnownWriteTime" : 1548642802,
+    "last_content_update" : 1548642802968,
+    "path" : "D:/Users/nzhu/eitc/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+        "cursorPosition" : "4,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

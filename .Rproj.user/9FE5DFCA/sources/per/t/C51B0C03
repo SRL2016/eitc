@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1546806206991.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "20|31|26|2|\n27|20|32|2|\n71|35|75|2|\n78|28|95|2|\n79|19|90|4|\n91|9|94|4|\n100|21|102|4|\n103|25|124|4|\n104|55|112|6|\n113|12|122|8|\n137|73|157|4|\n160|35|162|4|\n163|32|165|4|\n166|33|168|4|\n169|33|171|4|\n172|34|174|4|\n175|32|177|4|\n178|35|180|4|\n181|35|183|4|\n184|30|186|4|\n187|34|189|4|\n200|31|207|4|\n208|35|217|4|\n219|75|270|4|\n220|35|222|6|\n226|34|268|8|\n",
+    "hash" : "4110433699",
+    "id" : "C51B0C03",
+    "lastKnownWriteTime" : 1548642805,
+    "last_content_update" : 1548642805822,
+    "path" : "D:/Users/nzhu/eitc/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "9,37",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

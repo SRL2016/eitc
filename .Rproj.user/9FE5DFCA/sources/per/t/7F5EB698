@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1546806259774.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1966008474",
+    "id" : "7F5EB698",
+    "lastKnownWriteTime" : 1548641653,
+    "last_content_update" : 1548641653289,
+    "path" : "D:/Users/nzhu/eitc/report.Rmd",
+    "project_path" : "report.Rmd",
+    "properties" : {
+        "cursorPosition" : "44,0",
+        "scrollLine" : "37"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

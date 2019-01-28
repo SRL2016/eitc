@@ -38,12 +38,24 @@ demograph[demograph$others_per>100, "others_per"] <- NA
   names(rpt_lst) <- c("Zip Code","County","State House District","State Senate District")
   
   rpt_index <- as.data.frame(
-    cbind(c("Total Families","# EITC Qualified Families","% EITC Qualified Families",
-                       "Total Tax Filers","# EITC Claims","% EITC Claims","EITC Amount"),
-                     c("ttl_fam","qual_fam","qual_share",
-                       "total_return","eitc_return","eitc_share","eitc_amnt"))
+    cbind(c("Total Households","Households (Income < 50K)","Total Families","Families (Income < 50K with Own Children)",
+            "Total Tax Filers","# EITC Claims","% EITC Claims","EITC Amount",
+            "Total Households","Households (Income < 50K)","Total Families","Families (Income < 50K with Own Children)",
+            "Total Tax Filers","# EITC Claims","% EITC Claims","EITC Amount",
+            "Total Households","Households (Income < 50K)","Total Families","Families (Income < 50K with Own Children)",
+            "Total Households","Households (Income < 50K)","Total Families","Families (Income < 50K with Own Children)"),
+          c("ttl_hh","qual_hh","ttl_fam","qual_fam",
+            "total_return","eitc_return","eitc_share","eitc_amnt",
+            "ttl_hh","qual_hh","ttl_fam","qual_fam",
+            "total_return","eitc_return","eitc_share","eitc_amnt",
+            "ttl_hh","qual_hh","ttl_fam","qual_fam",
+            "ttl_hh","qual_hh","ttl_fam","qual_fam"),
+          c("Zip Code","Zip Code","Zip Code","Zip Code","Zip Code","Zip Code","Zip Code","Zip Code",
+            "County","County","County","County","County","County","County","County",
+            "State House District","State House District","State House District","State House District",
+            "State Senate District","State Senate District","State Senate District","State Senate District"))
   )
-  colnames(rpt_index) <- c("dropdown", "column")
+  colnames(rpt_index) <- c("dropdown", "column","geography")
   
   # rpt_col_lst <- list()
   # rpt_col_lst[[1]] <- list(
@@ -302,13 +314,12 @@ irs_ramp <- leaflet::colorBin(
   bins = classIntervals(zip_irs$qual_share*100, 7, style = "fisher")$brks,
   na.color = "#808080"
 )
-
-pums_ramp <- leaflet::colorBin(
-  palette = brewer.pal(7, "Reds"),
-  bins = classIntervals(puma_units$EstEITC_QTU, 7, style = "fisher")$brks,
-  na.color = "#808080"
-)
   #legistalive boundary ramp ---------------------------------------------
+  pums_ramp <- leaflet::colorBin(
+    palette = brewer.pal(7, "Reds"),
+    bins = classIntervals(puma_units$EstEITC_QTU, 7, style = "fisher")$brks,
+    na.color = "#808080"
+  )
     #zip----
 zip_ttlfam_ramp <- leaflet::colorBin(
   palette = brewer.pal(7, "Blues"),
