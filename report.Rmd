@@ -8,8 +8,8 @@ output:
 #      css: bootstrap.css
 params:
   unit: 
-  region: 'Denver County'
-  rep: 'placeholder'
+  region: ''
+  rep: ''
   geom: 
   pop: ''
   pvrty: ''
@@ -32,7 +32,8 @@ params:
   eng_spk: ''
   spn_spk: ''
   other_spk: ''
-  taxsite: ''
+  taxsite1: ''
+  taxsite2: ''
 ---
 
 ```{r setup, include=FALSE}
@@ -45,7 +46,7 @@ library(ggplot2)
 rpt <- readRDS("infograph/rpt.rds")
 dat <- rpt[[paste(params$unit)]]
 raceeth <- data.frame(
-  cat <- c('White (not Hispanic or Latino)', 'Hispanic or Latino', 'Black or African American', 'AMERICAN INDIAN AND ALASKA NATIVE', 'Asian and Pacific Islander'),
+  cat <- c('White (not Hispanic or Latino)', 'Hispanic or Latino', 'Black or African American', 'American Indian and Alaska Native', 'Asian and Pacific Islander'),
   popu <- c(params$nonhiswhite, params$hislat, params$black, params$native, params$asin)
 )
 age <- data.frame(
@@ -58,12 +59,16 @@ lang <- data.frame(
 )
 ```
 
-*** 
+***
+<div class = "fluid-row">
 ###Get Ahead Colorado is a program of The Piton Foundation that provides resources to families in Colorado who qualify for the Earned Income Tax Credit and free tax preparation through Tax Help Colorado.
+</div>
+<div class = "fluid-row">
 ###Only three out of four individuals and families in Colorado who are eligible for the EITC receive the credit. We need your help to make sure that every eligible family in Colorado claims the credit and gets cash back to help with things like transportation, housing and child care.
+</div>
+***
 
 <div class = "row">
-  
 <div class = "col-md-6">
 #### Demographic Summary: `r params$region` <br>
 **Total Population:** `r format(params$pop, big.mark=",")` residents <br>
@@ -74,37 +79,35 @@ lang <- data.frame(
 </div>
   
 <div class = "col-md-6">
-<br><br>**Region Representative:** `r params$rep`
+<br><br>**Region Representative:** `r params$rep`<br>
 </div>
 
 </div>
 
 ***
 
-**Tax Help Sites in** `r params$region`: `params$taxsite`
-
-
-
+**Tax Help Sites in** `r params$region`:<br>
+Primary: `r params$taxsite1`<br>
+Secondary: `r params$taxsite2`<br>
 
 ***
 
 <div class = "fluid-row">
   <div class = "col-md-4">
 ```{r race_ethnicity, echo=FALSE}
-ggplot(raceeth,aes(x=cat,y=popu,fill=cat)) + geom_bar(width = 1, stat = "identity") + 
-  labs(title="Race Demographics", x="Race", y="Population") + guides(fill=FALSE) 
+ggplot(raceeth,aes(x=cat,y=popu,fill=cat)) + geom_bar(width = 0.5, stat = "identity") + coord_flip() + labs(title="Race Demographics", x="Race", y="Population") + guides(fill=FALSE) 
 ```
   </div>
   <div class = "col-md-4">
 ```{r age, echo=FALSE}
 ggplot(age,aes(x="",fill=agerg, y=pop)) + geom_bar(stat = "identity") + coord_polar("y")+ 
-  labs(title="Age Demographics") + guides(fill=FALSE)
+  labs(title="Age Demographics", y="Percentage") + guides(fill=guide_legend(title='Age Range', title.position = 'top'))
 ```
   </div>
   <div class = "col-md-4">
 ```{r language, echo=FALSE}
 ggplot(lang,aes(x="",fill=lan, y=ppl)) + geom_bar(stat = "identity") + coord_polar("y")+ 
-  labs(title="Language Demographics") + guides(fill=FALSE)
+  labs(title="Language Demographics", y="Percentage") + guides(fill=guide_legend(title='Language', title.position = 'top'))
 ```
   </div>
 </div>

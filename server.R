@@ -126,7 +126,7 @@ shinyServer(function(input, output) {
 
     col_ramp <- reactive({
       colorBin(
-        palette = brewer.pal(7, sample(c("Greens","Purples","Browns"),1)),
+        palette = brewer.pal(7, sample(c("Greens","Purples","Oranges"),1)),
         bins = classIntervals(dat(), 7, style = "fisher")$brks,
         na.color = "#808080"
       )
@@ -259,7 +259,8 @@ shinyServer(function(input, output) {
             eng_spk = tbl()[tbl()$geoid10==clk()$id,'english_spk'],
             spn_spk = tbl()[tbl()$geoid10==clk()$id,'spanish_spk'],
             other_spk = tbl()[tbl()$geoid10==clk()$id,'other_languages'],
-            taxsite = 5000 #placeholder
+            taxsite1 = tbl()[tbl()$geoid10==clk()$id,'taxsite1'],
+            taxsite2 = tbl()[tbl()$geoid10==clk()$id,'taxsite2']
           )
           
           rmarkdown::render(tempReport, output_file = file,
